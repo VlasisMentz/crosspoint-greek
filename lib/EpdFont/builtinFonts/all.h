@@ -1,7 +1,28 @@
 #pragma once
 
-// NotoSans fonts (with Greek support in 12pt and 16pt)
+// Bookerly fonts (with Greek support)
+#include <builtinFonts/bookerly_12_regular.h>
+#include <builtinFonts/bookerly_12_bold.h>
+#include <builtinFonts/bookerly_12_italic.h>
+#include <builtinFonts/bookerly_12_bolditalic.h>
+#include <builtinFonts/bookerly_14_regular.h>
+#include <builtinFonts/bookerly_14_bold.h>
+#include <builtinFonts/bookerly_14_italic.h>
+#include <builtinFonts/bookerly_14_bolditalic.h>
+#include <builtinFonts/bookerly_16_regular.h>
+#include <builtinFonts/bookerly_16_bold.h>
+#include <builtinFonts/bookerly_16_italic.h>
+#include <builtinFonts/bookerly_16_bolditalic.h>
+#include <builtinFonts/bookerly_18_regular.h>
+#include <builtinFonts/bookerly_18_bold.h>
+#include <builtinFonts/bookerly_18_italic.h>
+#include <builtinFonts/bookerly_18_bolditalic.h>
+
+// NotoSans fonts (with Greek support)
 #include <builtinFonts/notosans_8_regular.h>
+#include <builtinFonts/notosans_8_bold.h>
+#include <builtinFonts/notosans_8_italic.h>
+#include <builtinFonts/notosans_8_bolditalic.h>
 #include <builtinFonts/notosans_12_bold.h>
 #include <builtinFonts/notosans_12_bolditalic.h>
 #include <builtinFonts/notosans_12_italic.h>
