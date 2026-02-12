@@ -38,11 +38,34 @@ uint32_t toLowerCyrillicImpl(const uint32_t cp) {
   return cp;
 }
 
+// Convert Greek uppercase letters to lowercase
+// Greek uppercase range 0x0391-0x03A9 maps to lowercase by adding 0x20
+// Also handle special cases and extended Greek
+uint32_t toLowerGreekImpl(const uint32_t cp) {
+  // Standard Greek uppercase letters (Α-Ω)
+  if (cp >= 0x0391 && cp <= 0x03A9) {
+    return cp + 0x20;
+  }
+  // Greek with tonos and dialytika
+  if (cp >= 0x0386 && cp <= 0x038A) {
+    return cp + 0x25;  // Ά-Ί
+  }
+  if (cp == 0x038C) {
+    return 0x03CC;  // Ό
+  }
+  if (cp >= 0x038E && cp <= 0x038F) {
+    return cp + 0x3F;  // Ύ-Ώ
+  }
+  return cp;
+}
+
 }  // namespace
 
 uint32_t toLowerLatin(const uint32_t cp) { return toLowerLatinImpl(cp); }
 
 uint32_t toLowerCyrillic(const uint32_t cp) { return toLowerCyrillicImpl(cp); }
+
+uint32_t toLowerGreek(const uint32_t cp) { return toLowerGreekImpl(cp); }
 
 bool isLatinLetter(const uint32_t cp) {
   if ((cp >= 'A' && cp <= 'Z') || (cp >= 'a' && cp <= 'z')) {
@@ -67,7 +90,14 @@ bool isLatinLetter(const uint32_t cp) {
 
 bool isCyrillicLetter(const uint32_t cp) { return (cp >= 0x0400 && cp <= 0x052F); }
 
-bool isAlphabetic(const uint32_t cp) { return isLatinLetter(cp) || isCyrillicLetter(cp); }
+bool isGreekLetter(const uint32_t cp) { 
+  // Greek and Coptic block (0x0370-0x03FF)
+  // Covers Greek letters (uppercase 0x0391-0x03A9, lowercase 0x03B1-0x03C9)
+  // and Greek with diacritics
+  return (cp >= 0x0370 && cp <= 0x03FF); 
+}
+
+bool isAlphabetic(const uint32_t cp) { return isLatinLetter(cp) || isCyrillicLetter(cp) || isGreekLetter(cp); }
 
 bool isPunctuation(const uint32_t cp) {
   switch (cp) {
