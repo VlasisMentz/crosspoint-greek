@@ -90,11 +90,11 @@ bool isLatinLetter(const uint32_t cp) {
 
 bool isCyrillicLetter(const uint32_t cp) { return (cp >= 0x0400 && cp <= 0x052F); }
 
-bool isGreekLetter(const uint32_t cp) { 
+bool isGreekLetter(const uint32_t cp) {
   // Greek and Coptic block (0x0370-0x03FF)
   // Covers Greek letters (uppercase 0x0391-0x03A9, lowercase 0x03B1-0x03C9)
   // and Greek with diacritics
-  return (cp >= 0x0370 && cp <= 0x03FF); 
+  return (cp >= 0x0370 && cp <= 0x03FF);
 }
 
 bool isAlphabetic(const uint32_t cp) { return isLatinLetter(cp) || isCyrillicLetter(cp) || isGreekLetter(cp); }
