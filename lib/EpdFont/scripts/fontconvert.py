@@ -6,6 +6,11 @@ import re
 import math
 import argparse
 from collections import namedtuple
+import io
+
+# Fix Unicode output on Windows
+if sys.platform == 'win32':
+    sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8', errors='replace')
 
 # Originally from https://github.com/vroland/epdiy
 
@@ -51,7 +56,7 @@ intervals = [
     (0x0300, 0x036F),
     ### Greek & Coptic ###
     # Used in science, maths, philosophy, some academic texts
-    # (0x0370, 0x03FF),
+    (0x0370, 0x03FF),
     ### Cyrillic ###
     # Russian, Ukrainian, Bulgarian, etc.
     (0x0400, 0x04FF),

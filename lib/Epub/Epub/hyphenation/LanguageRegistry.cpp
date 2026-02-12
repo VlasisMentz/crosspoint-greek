@@ -5,6 +5,7 @@
 
 #include "HyphenationCommon.h"
 #include "generated/hyph-de.trie.h"
+#include "generated/hyph-el.trie.h"
 #include "generated/hyph-en.trie.h"
 #include "generated/hyph-es.trie.h"
 #include "generated/hyph-fr.trie.h"
@@ -17,16 +18,18 @@ namespace {
 LanguageHyphenator englishHyphenator(en_us_patterns, isLatinLetter, toLowerLatin, 3, 3);
 LanguageHyphenator frenchHyphenator(fr_patterns, isLatinLetter, toLowerLatin);
 LanguageHyphenator germanHyphenator(de_patterns, isLatinLetter, toLowerLatin);
+LanguageHyphenator greekHyphenator(el_patterns, isGreekLetter, toLowerGreek);
 LanguageHyphenator russianHyphenator(ru_ru_patterns, isCyrillicLetter, toLowerCyrillic);
 LanguageHyphenator spanishHyphenator(es_patterns, isLatinLetter, toLowerLatin);
 LanguageHyphenator italianHyphenator(it_patterns, isLatinLetter, toLowerLatin);
 
-using EntryArray = std::array<LanguageEntry, 6>;
+using EntryArray = std::array<LanguageEntry, 7>;
 
 const EntryArray& entries() {
   static const EntryArray kEntries = {{{"english", "en", &englishHyphenator},
                                        {"french", "fr", &frenchHyphenator},
                                        {"german", "de", &germanHyphenator},
+                                       {"greek", "el", &greekHyphenator},
                                        {"russian", "ru", &russianHyphenator},
                                        {"spanish", "es", &spanishHyphenator},
                                        {"italian", "it", &italianHyphenator}}};
